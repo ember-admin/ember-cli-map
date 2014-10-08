@@ -4,7 +4,7 @@ yandexMapView = AbstractMapView.extend
 
   mapType: 'asYandexMap'
 
-  templateName: "admin/base/_geo"
+  templateName: "admin/_geo"
 
   didInsertElement: ->
     self = @
