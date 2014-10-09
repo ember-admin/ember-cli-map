@@ -1,8 +1,8 @@
-`import AbstractMapView from '../map/abstract-map'`
+`import Ember from 'ember'`
+`import AbstractMapMixin from 'ember-map/mixins/abstract-map'`
+#`import AutocompleteView from '../views/map-autocomplete'`
 
-gmapView = AbstractMapView.extend
-
-  templateName: "admin/_geo"
+gmapView = Ember.Component.extend AbstractMapMixin,
 
   mapType: 'asGoogleMap'
 

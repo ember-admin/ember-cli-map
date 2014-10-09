@@ -1,10 +1,9 @@
-`import AbstractMapView from '../map/abstract-map'`
+`import Ember from 'ember'`
+`import AbstractMapMixin from 'ember-map/mixins/abstract-map'`
 
-yandexMapView = AbstractMapView.extend
+yandexMapView = Ember.Component.extend AbstractMapMixin,
 
   mapType: 'asYandexMap'
-
-  templateName: "admin/_geo"
 
   didInsertElement: ->
     self = @
@@ -12,7 +11,7 @@ yandexMapView = AbstractMapView.extend
     ymaps.ready(=>@initMap.call(self))
 
   initMap: ->
-    map = new ymaps.Map('map_container', {
+    map = new ymaps.Map(this.get('childId'), {
       center: @get('center'),
       zoom: @get('zoom')
     })
@@ -48,6 +47,7 @@ yandexMapView = AbstractMapView.extend
 
   initAutocomplete: (map, marker) ->
     autocompleteView = @get('MapAutocomplete')
+    console.log(autocompleteView)
     input =  autocompleteView.$().hide()
 
 `export default yandexMapView`

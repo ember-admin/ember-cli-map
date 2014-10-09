@@ -1,40 +1,39 @@
 `import Ember from 'ember'`
 
-abstractMapView = Ember.View.extend
-  templateName: "admin/_geo"
+abstractMapMixin = Ember.Mixin.create
 
   lat: (->
-    @get("context.#{@get('latAttr')}")
+    @get("model.#{@get('latAttr')}")
   ).property()
 
   setLan: (value) ->
-    @get('context').set(@get('latAttr'), value)
+    @get('model').set(@get('latAttr'), value)
 
   latAttr:(->
-    @get("context.#{@get('mapType')}")[0]
+    @get("model.#{@get('mapType')}")[0]
   ).property()
 
   long:(->
-    @get("context.#{@get('longAttr')}")
+    @get("model.#{@get('longAttr')}")
   ).property()
 
   longAttr:(->
-    @get("context.#{@get('mapType')}")[1]
+    @get("model.#{@get('mapType')}")[1]
   ).property()
 
   setLong: (value) ->
-    @get('context').set(@get('longAttr'), value)
+    @get('model').set(@get('longAttr'), value)
 
   zoom:(->
-    @get("context.#{@get('zoomAttr')}") || 8
+    @get("model.#{@get('zoomAttr')}") || 8
   ).property()
 
   zoomAttr: (->
-    @get("context.#{@get('mapType')}")[2]
+    @get("model.#{@get('mapType')}")[2]
   ).property()
 
   setZoom: (value) ->
-    @get('context').set(@get('zoomAttr'), value)
+    @get('model').set(@get('zoomAttr'), value)
 
   centerCoords: ->
     if @get('lat') && @get('long')
@@ -50,4 +49,4 @@ abstractMapView = Ember.View.extend
       @setLat(pos.ob)
       @setLong(pos.pb)
 
-`export default abstractMapView`
+`export default abstractMapMixin`
