@@ -1,6 +1,7 @@
 Ember Map
 =========
 
+
 Ember Map provides you with google-map and yandex-map components.
 
 Version
