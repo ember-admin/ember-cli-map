@@ -1,6 +1,7 @@
 Ember Map
 =========
 
+[![Build Status](https://travis-ci.org/ember-admin/ember-map.svg?branch=master)](https://travis-ci.org/ember-admin/ember-map)
 
 Ember Map provides you with google-map and yandex-map components.
 
