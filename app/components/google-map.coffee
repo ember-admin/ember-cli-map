@@ -1,6 +1,5 @@
 `import Ember from 'ember'`
 `import AbstractMapMixin from 'ember-map/mixins/abstract-map'`
-#`import AutocompleteView from '../views/map-autocomplete'`
 
 gmapView = Ember.Component.extend AbstractMapMixin,
 

@@ -47,7 +47,6 @@ yandexMapView = Ember.Component.extend AbstractMapMixin,
 
   initAutocomplete: (map, marker) ->
     autocompleteView = @get('MapAutocomplete')
-    console.log(autocompleteView)
     input =  autocompleteView.$().hide()
 
 `export default yandexMapView`
