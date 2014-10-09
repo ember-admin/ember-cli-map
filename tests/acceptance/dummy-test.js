@@ -20,3 +20,12 @@ asyncTest('google maps are displayed', function() {
     equal(find('.gm-style').length, 2);
   }, 300);
 });
+
+asyncTest('yandex maps are displayed', function() {
+  expect(1);
+  visit('/');
+  Ember.run.later(this, function() {
+    start();
+    equal(find('.ymaps-map').length, 1);
+  }, 300);
+});
