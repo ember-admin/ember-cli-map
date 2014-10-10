@@ -10,6 +10,14 @@ Version
 
 0.1-beta.0
 
+Add Maps Libraries
+--------------
+
+```
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&amp;key={ApiKey}&libraries=places"></script>
+<script src="http://api-maps.yandex.ru/2.0/?load=package.standard&lang=ru-Ru"></script>
+```
+
 Model Setup
 --------------
 Declare fields to use with map component:

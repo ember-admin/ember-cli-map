@@ -1,3 +1,3 @@
 module.exports = {
-  name: 'ember-map'
+  name: 'ember-cli-map'
 };

@@ -1,5 +1,5 @@
 `import Ember from 'ember'`
-`import AbstractMapMixin from 'ember-map/mixins/abstract-map'`
+`import AbstractMapMixin from 'ember-cli-map/mixins/abstract-map'`
 
 gmapView = Ember.Component.extend AbstractMapMixin,
 

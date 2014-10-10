@@ -1,4 +1,3 @@
-|Geo Input
 .geo_input
   view 'map-autocomplete' viewName="MapAutocomplete"
 .map
