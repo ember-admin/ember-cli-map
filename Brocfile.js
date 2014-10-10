@@ -17,12 +17,12 @@ var app = new EmberAddon();
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
-//module.exports = app.toTree();
+// module.exports = app.toTree();
 
 var compileSass = require('broccoli-sass');
-var mapCss   = compileSass(['app/styles'], 'app.scss',  'assets/vendor.css');
-
-
-// Merge the bootstrapFonts with the ember app tree
+var mapCss   = compileSass(['app/styles'], 'map.scss',  'assets/vendor.css');
+//
+//
+// // Merge the bootstrapFonts with the ember app tree
 var mergeTrees = require('broccoli-merge-trees');
-module.exports = mergeTrees([app.toTree(), mapCss], { overwrite: true });
+module.exports = mergeTrees([app.toTree(),mapCss], { overwrite: true });
