@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-map",
-  "version": "0.1-beta.0",
+  "version": "0.1.0",
   "directories": {
     "doc": "doc",
     "test": "tests"
