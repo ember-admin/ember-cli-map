@@ -6,7 +6,7 @@ abstractMapMixin = Ember.Mixin.create
     @get("model.#{@get('latAttr')}")
   ).property()
 
-  setLan: (value) ->
+  setLat: (value) ->
     @get('model').set(@get('latAttr'), value)
 
   latAttr:(->
