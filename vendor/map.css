@@ -1,22 +1,22 @@
 .map {
-  height: 400px;
-  margin-left: 10%;
-  width: 81%;
-  margin-top: 0.6em;
-  img {
-    max-width: none;
-  }
+    height: 400px;
+    margin-left: 10%;
+    width: 81%;
+    margin-top: 0.6em;
 }
+.map img {
+    max-width: none;
+}
+
 .geo_input {
-  margin-bottom: 30px;
-  label {
+    margin-bottom: 30px;
+}
+.geo_input label {
     display: inline-block;
     width: 10%;
-  }
-  input {
+}
+.geo_input input {
     display: inline-block;
     width: 80% !important;
     margin-left: 1px;
-  }
-
 }
