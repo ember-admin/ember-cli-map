@@ -7,7 +7,7 @@ abstractMapMixin = Ember.Mixin.create({
   lat: (function() {
     return this.get("model." + (this.get('latAttr')));
   }).property(),
-  setLan: function(value) {
+  setLat: function(value) {
     return this.get('model').set(this.get('latAttr'), value);
   },
   latAttr: (function() {
@@ -38,14 +38,9 @@ abstractMapMixin = Ember.Mixin.create({
       return ["50.44067063154785", "30.52654266357422"];
     }
   },
-  setAttrs: function(pos) {
-    if (pos['push']) {
-      this.setLat(pos[0]);
-      return this.setLong(pos[1]);
-    } else {
-      this.setLat(pos.ob);
-      return this.setLong(pos.pb);
-    }
+  setAttrs: function(lat, long) {
+    this.setLat(lat);
+    return this.setLong(long);
   }
 });
 

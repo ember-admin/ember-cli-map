@@ -40,7 +40,7 @@ gmapView = Ember.Component.extend AbstractMapMixin,
     google.maps.event.addListener marker, 'dragend', (event) =>
       map.setCenter(event.latLng)
       pos = marker.getPosition()
-      @setAttrs(pos)
+      @setAttrs(pos.lat(), pos.lng())
     marker
 
   initAutocomplete: (map, marker) ->
@@ -58,6 +58,6 @@ gmapView = Ember.Component.extend AbstractMapMixin,
         map.setZoom(17)
 
       marker.setPosition(pos)
-      @setAttrs(pos)
+      @setAttrs(pos.lat(), pos.lng())
 
 `export default gmapView`

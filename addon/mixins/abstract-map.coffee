@@ -49,4 +49,8 @@ abstractMapMixin = Ember.Mixin.create
       @setLat(pos.ob)
       @setLong(pos.pb)
 
+  setAttrs: (lat, long) ->
+    @setLat(lat)
+    @setLong(long)
+
 `export default abstractMapMixin`
