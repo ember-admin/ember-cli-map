@@ -7,7 +7,6 @@ yandexMapView = Ember.Component.extend AbstractMapMixin,
 
   didInsertElement: ->
     self = @
-    console.log ymaps
     ymaps.ready(=>@initMap.call(self))
 
   initMap: ->

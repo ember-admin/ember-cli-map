@@ -13,14 +13,13 @@ module.exports = function(environment) {
       }
     },
 
-//    contentSecurityPolicy: {
-//      'script-src': "'self' 'unsafe-inline' 'unsafe-eval' use.typekit.net connect.facebook.net maps.googleapis.com " +
-//        "mts0.googleapis.com maps.gstatic.com api-maps.yandex.ru",
-//      'style-src': "'self' 'unsafe-inline' use.typekit.net fonts.googleapis.com",
-//      'img-src': "'self' www.facebook.com p.typekit.net api-maps.yandex.ru maps.gstatic.com csi.gstatic.com maps.googleapis.com" +
-//        "mts0.googleapis.com mts1.googleapis.com mts.googleapis.com https://mts0.googleapis.com https://maps.googleapis.com",
-//      'font-src': 'fonts.gstatic.com'
-//    },
+    contentSecurityPolicy: {
+      'script-src': "'self' 'unsafe-inline' 'unsafe-eval' use.typekit.net connect.facebook.net *.googleapis.com " +
+        "*.gstatic.com *.yandex.ru",
+      'style-src': "'self' 'unsafe-inline' use.typekit.net *.googleapis.com",
+      'img-src': "*",
+      'font-src': '*.gstatic.com'
+    },
 
     APP: {
       // Here you can pass flags/options to your application instance
