@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-map",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Ember Map provides you with google-map and yandex-map components.",
   "directories": {
     "doc": "doc",
