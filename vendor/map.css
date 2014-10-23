@@ -16,7 +16,6 @@
     width: 10%;
 }
 .geo_input input {
-    display: inline-block;
+    margin-left: 10%;
     width: 80% !important;
-    margin-left: 1px;
 }
