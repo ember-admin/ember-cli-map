@@ -8,7 +8,7 @@ Ember Map provides you with google-map and yandex-map components.
 Version
 ----
 
-0.2.1
+0.2.2
 
 Add Maps Libraries
 --------------
