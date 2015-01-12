@@ -2,6 +2,7 @@ Ember Map
 =========
 
 [![Build Status](https://travis-ci.org/ember-admin/ember-cli-map.svg?branch=master)](https://travis-ci.org/ember-admin/ember-cli-map)
+[![npm version](https://badge.fury.io/js/ember-cli-map.svg)](http://badge.fury.io/js/ember-cli-map)
 
 Ember Map provides you with google-map and yandex-map components.
 
