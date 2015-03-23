@@ -1,4 +1,6 @@
-<div class="geo_input">
-  {{view 'map-autocomplete' viewName="MapAutocomplete"}}
-</div>
+{{#unless disableAutocomplete}}
+  <div class="geo_input">
+    {{view 'map-autocomplete' viewName="MapAutocomplete"}}
+  </div>
+{{/unless}}
 <div class="map"></div>
