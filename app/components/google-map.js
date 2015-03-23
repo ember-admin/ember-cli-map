@@ -13,7 +13,9 @@ gmapView = Ember.Component.extend(AbstractMapMixin, {
     };
     map = new google.maps.Map(this.$().find(".map")[0], options);
     marker = this.initMarker(map);
-    this.initAutocomplete(map, marker);
+    if (!this.get('disableAutocomplete')){
+      this.initAutocomplete(map, marker);
+    }
     return google.maps.event.addListener(map, 'zoom_changed', (function(_this) {
       return function() {
         return _this.setZoom(map.getZoom());
