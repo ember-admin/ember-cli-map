@@ -38,6 +38,9 @@ abstractMapMixin = Ember.Mixin.create({
     }
   },
   setAttrs: function(lat, long) {
+    if (this.get('disableMapping')){
+      return;
+    }
     this.setLat(lat);
     return this.setLong(long);
   }
