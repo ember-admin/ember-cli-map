@@ -34,7 +34,7 @@ abstractMapMixin = Ember.Mixin.create({
     if (this.get('lat') && this.get('long')) {
       return [this.get('lat'), this.get('long')];
     } else {
-      return ["50.44067063154785", "30.52654266357422"];
+      return [this.get('defaultLat')|| "50.44067063154785", this.get('defaultLong') || "30.52654266357422"];
     }
   },
   setAttrs: function(lat, long) {
