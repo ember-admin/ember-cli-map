@@ -27,6 +27,10 @@ module.exports = function(environment) {
     }
   };
 
+  ENV['ember-cli-map'] = {
+    googleApiKey: 'AIzaSyCqyf1CwoH9VU6XNYBmIXZSRsMQ0BJUOrw'
+  };
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     ENV.APP.LOG_ACTIVE_GENERATION = true;

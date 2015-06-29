@@ -20,7 +20,7 @@ test('google maps are displayed', function(assert) {
   Ember.run.later(this, function() {
     start();
     assert.equal(find('.gm-style').length, 2);
-  }, 300);
+  }, 1000);
 });
 
 test('yandex maps are displayed', function(assert) {
