@@ -73,9 +73,8 @@ export default Ember.Component.extend(AbstractMapMixin, {
     });
   },
   actions: {
-    
     onAutoPress(e){
-      console.log("SDKSJDKSJDKJSDKJS", e)
+      console.log(e);
     }
   }
 });
