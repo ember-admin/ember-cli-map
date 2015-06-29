@@ -9,7 +9,7 @@ Ember Map provides you with google-map and yandex-map components.
 Add Maps Libraries
 --------------
 To use google maps you need to set apiKey in `config/environment.js`.
-```
+```javascript
 ENV['ember-cli-map'] = {
   googleApiKey: 'MYsecretKEY'
 };
@@ -19,14 +19,14 @@ Model Setup
 --------------
 Declare fields to use with map component:
 
-```
+```javascript
 asGoogleMap: ['lat', 'long', 'zoom'] // or
 asYandexMap: ['lat', 'long', 'zoom']
 ```
 
 ###Example:
 
-```
+```javascript
 export default DS.Model.extend({
     lat:       DS.attr('number'),
     long:      DS.attr('number'),
@@ -37,14 +37,14 @@ export default DS.Model.extend({
 
 #In your template
 
-```
+```handlebars
 {{google-map model=model}}
 ```
 
 For yandex-map component, you should also pass childId parameter - unique id that will be given to the div this map is rendered into.
 
 
-```
+```handlebars
 {{yandex-map model=model childId='yandex-map'}}
 ```
 
