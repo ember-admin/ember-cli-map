@@ -33,6 +33,10 @@
     "ember-try": "0.0.6",
     "ember-watson": "0.5.5"
   },
+  "dependencies": {
+    "ember-cli-babel": "^5.0.0",
+    "ember-cli-htmlbars": "0.7.9"
+  },
   "keywords": [
     "ember-addon"
   ],

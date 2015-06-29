@@ -13,18 +13,20 @@ module('Acceptance: Admin', {
   }
 });
 
-asyncTest('google maps are displayed', function() {
+test('google maps are displayed', function(assert) {
   assert.expect(1);
   visit('/');
+  stop();
   Ember.run.later(this, function() {
     start();
     assert.equal(find('.gm-style').length, 2);
   }, 300);
 });
 
-asyncTest('yandex maps are displayed', function() {
+test('yandex maps are displayed', function(assert) {
   assert.expect(1);
   visit('/');
+  stop();
   Ember.run.later(this, function() {
     start();
     assert.equal(find('.ymaps-map').length, 1);
