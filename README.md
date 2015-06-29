@@ -11,7 +11,7 @@ Add Maps Libraries
 To use google maps you need to set apiKey in `config/environment.js`.
 ```
 ENV['ember-cli-map'] = {
-  googleApiKey: 'AIzaSyCqyf1CwoH9VU6XNYBmIXZSRsMQ0BJUOrw'
+  googleApiKey: 'MYsecretKEY'
 };
 ```
 
