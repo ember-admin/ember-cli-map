@@ -1,31 +1,32 @@
 import Ember from 'ember';
+import {module, test} from 'qunit';
 import startApp from '../helpers/start-app';
 
 var App, server;
 
 module('Acceptance: Admin', {
-  setup: function() {
+  beforeEach: function() {
     App = startApp();
   },
-  teardown: function() {
+  afterEach: function() {
     Ember.run(App, 'destroy');
   }
 });
 
 asyncTest('google maps are displayed', function() {
-  expect(1);
+  assert.expect(1);
   visit('/');
   Ember.run.later(this, function() {
     start();
-    equal(find('.gm-style').length, 2);
+    assert.equal(find('.gm-style').length, 2);
   }, 300);
 });
 
 asyncTest('yandex maps are displayed', function() {
-  expect(1);
+  assert.expect(1);
   visit('/');
   Ember.run.later(this, function() {
     start();
-    equal(find('.ymaps-map').length, 1);
+    assert.equal(find('.ymaps-map').length, 1);
   }, 300);
 });

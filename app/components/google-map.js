@@ -4,7 +4,7 @@ var gmapView;
 
 gmapView = Ember.Component.extend(AbstractMapMixin, {
   mapType: 'asGoogleMap',
-  initialize: (function() {
+  initialize: Ember.on('didInsertElement', function() {
     var map, marker, options;
     options = {
       zoom: this.get('zoom'),
@@ -21,15 +21,15 @@ gmapView = Ember.Component.extend(AbstractMapMixin, {
         return _this.setZoom(map.getZoom());
       };
     })(this));
-  }).on('didInsertElement'),
-  center: (function() {
+  }),
+  center: Ember.computed(function() {
     var coord;
     coord = this.centerCoords();
     return new google.maps.LatLng(coord[0], coord[1]);
-  }).property(),
-  mapTypeId: (function() {
+  }),
+  mapTypeId: Ember.computed(function() {
     return google.maps.MapTypeId.ROADMAP;
-  }).property(),
+  }),
   initMarker: function(map) {
     var marker, options;
     options = {

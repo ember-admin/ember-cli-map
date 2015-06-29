@@ -1,32 +1,31 @@
 import Ember from 'ember';
-var abstractMapMixin;
 
-abstractMapMixin = Ember.Mixin.create({
+export default Ember.Mixin.create({
 
-  lat: (function() {
+  lat: Ember.computed(function() {
     return this.get("model." + (this.get('latAttr')));
-  }).property(),
+  }),
   setLat: function(value) {
     return this.get('model').set(this.get('latAttr'), value);
   },
-  latAttr: (function() {
+  latAttr: Ember.computed(function() {
     return this.get("model." + (this.get('mapType')))[0];
-  }).property(),
-  long: (function() {
+  }),
+  long: Ember.computed(function() {
     return this.get("model." + (this.get('longAttr')));
-  }).property(),
-  longAttr: (function() {
+  }),
+  longAttr: Ember.computed(function() {
     return this.get("model." + (this.get('mapType')))[1];
-  }).property(),
+  }),
   setLong: function(value) {
     return this.get('model').set(this.get('longAttr'), value);
   },
-  zoom: (function() {
+  zoom: Ember.computed(function() {
     return this.get("model." + (this.get('zoomAttr'))) || 8;
-  }).property(),
-  zoomAttr: (function() {
+  }),
+  zoomAttr: Ember.computed(function() {
     return this.get("model." + (this.get('mapType')))[2];
-  }).property(),
+  }),
   setZoom: function(value) {
     return this.get('model').set(this.get('zoomAttr'), value);
   },
@@ -45,5 +44,3 @@ abstractMapMixin = Ember.Mixin.create({
     return this.setLong(long);
   }
 });
-
-export default abstractMapMixin;

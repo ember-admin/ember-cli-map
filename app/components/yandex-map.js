@@ -29,9 +29,9 @@ yandexMapView = Ember.Component.extend(AbstractMapMixin, {
     });
     return this.initAutocomplete();
   },
-  center: (function() {
+  center: Ember.computed(function() {
     return this.centerCoords();
-  }).property(),
+  }),
   initMarker: function(map) {
     var mark;
     mark = new ymaps.Placemark(this.get('center'), {
