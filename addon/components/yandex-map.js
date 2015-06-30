@@ -3,10 +3,13 @@ import Ember from 'ember';
 import AbstractMapMixin from 'ember-cli-map/mixins/abstract-map';
 import layout from '../templates/components/yandex-map';
 
-export default Ember.Component.extend(AbstractMapMixin, {
+const { Component, computed } = Ember;
+
+export default Component.extend(AbstractMapMixin, {
   layout: layout,
 
   mapType: 'asYandexMap',
+
   didInsertElement: function() {
     return ymaps.ready(() => {
       return this.initMap.call(this);
@@ -28,7 +31,7 @@ export default Ember.Component.extend(AbstractMapMixin, {
     });
     return this.initAutocomplete();
   },
-  center: Ember.computed(function() {
+  center: computed(function() {
     return this.centerCoords();
   }),
   initMarker: function(map) {

@@ -3,12 +3,14 @@ import Ember from 'ember';
 import AbstractMapMixin from 'ember-cli-map/mixins/abstract-map';
 import layout from '../templates/components/google-map';
 
-export default Ember.Component.extend(AbstractMapMixin, {
+const { Component, on, computed } = Ember;
+
+export default Component.extend(AbstractMapMixin, {
   layout: layout,
 
   mapType: 'asGoogleMap',
 
-  initialize: Ember.on('didInsertElement', function() {
+  initialize: on('didInsertElement', function() {
     var map, marker, options;
     options = {
       zoom: this.get('zoom'),
@@ -24,12 +26,12 @@ export default Ember.Component.extend(AbstractMapMixin, {
       return this.setZoom(map.getZoom());
     });
   }),
-  center: Ember.computed(function() {
+  center: computed(function() {
     var coord;
     coord = this.centerCoords();
     return new google.maps.LatLng(coord[0], coord[1]);
   }),
-  mapTypeId: Ember.computed(function() {
+  mapTypeId: computed(function() {
     return google.maps.MapTypeId.ROADMAP;
   }),
   initMarker: function(map) {
@@ -72,9 +74,4 @@ export default Ember.Component.extend(AbstractMapMixin, {
       return this.setAttrs(pos.lat(), pos.lng());
     });
   },
-  actions: {
-    onAutoPress(e){
-      console.log(e);
-    }
-  }
 });

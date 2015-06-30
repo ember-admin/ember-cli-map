@@ -1,8 +1,14 @@
 <h2 id='title'>Welcome to Ember.js</h2>
 
+<div>
+  <ul>
+    <li>lat: {{model.lat}}</li>
+    <li>long: {{model.long}}</li>
+    <li>zoom: {{model.zoom}}</li>
+  </ul>
+</div>
+{{google-map model=model action='updateModel'}}
+{{yandex-map model=model childId='yandexMap' action='updateModel'}}
+{{google-map model=model action='updateModel'}}
+
 {{outlet}}
-
-{{google-map model=model}}
-{{yandex-map model=model childId='yandexMap'}}
-{{google-map model=model}}
-

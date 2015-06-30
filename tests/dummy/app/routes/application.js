@@ -1,8 +1,7 @@
 import Ember from 'ember';
-var ApplicationRoute;
 
-ApplicationRoute = Ember.Route.extend({
-  model: function() {
+export default Ember.Route.extend({
+  model() {
     return Ember.Object.create({
       lat: 40,
       long: 50,
@@ -10,7 +9,10 @@ ApplicationRoute = Ember.Route.extend({
       asGoogleMap: ['lat', 'long', 'zoom'],
       asYandexMap: ['lat', 'long', 'zoom']
     });
+  },
+  actions: {
+    updateModel(newCoordinates) {
+      this.get('currentModel').setProperties(newCoordinates);
+    }
   }
 });
-
-export default ApplicationRoute;
