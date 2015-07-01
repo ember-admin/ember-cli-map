@@ -5,16 +5,29 @@ import layout from '../templates/components/yandex-map';
 
 const { Component, computed } = Ember;
 
+var genId = function() {
+  var arr = new Uint8Array(8);
+  window.crypto.getRandomValues(arr);
+  return [].map.call(arr, function(n) { return n.toString(16); }).join("");
+};
+
 export default Component.extend(AbstractMapMixin, {
   layout: layout,
 
   mapType: 'asYandexMap',
+
+  childId: Ember.computed({
+    get(){
+      return genId();
+    }
+  }),
 
   didInsertElement: function() {
     return ymaps.ready(() => {
       return this.initMap.call(this);
     });
   },
+
   initMap: function() {
     var map;
     map = new ymaps.Map(this.get('childId'), {
