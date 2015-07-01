@@ -30,5 +30,5 @@ test('yandex maps are displayed', function(assert) {
   Ember.run.later(this, function() {
     start();
     assert.equal(find('.ymaps-map').length, 1);
-  }, 300);
+  }, 1000);
 });

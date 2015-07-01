@@ -13,6 +13,9 @@ module.exports = {
         var key = config['ember-cli-map'].googleApiKey;
         libs = libs + '<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key=' + key + '&libraries=places"></script>';
       }
+      else {
+        libs = libs + '<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>';
+      }
 
       return libs;
     }
