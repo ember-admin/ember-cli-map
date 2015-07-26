@@ -1,6 +1,11 @@
 {
   "framework": "qunit",
-  "test_page": "tests/index.html",
+  "test_page": "tests/index.html?hidepassed",
+  "disable_watching": true,
+  "phantomjs_args" : [
+    "--ignore-ssl-errors=true",
+    "--web-security=false"
+  ],
   "launch_in_ci": [
     "PhantomJS"
   ],
