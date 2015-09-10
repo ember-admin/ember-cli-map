@@ -8,7 +8,9 @@ const { Component, on, computed } = Ember;
 export default Component.extend(AbstractMapMixin, {
   layout: layout,
 
+  adress: null,
   mapType: 'asGoogleMap',
+  iconPath: null,
 
   initialize: on('didInsertElement', function() {
     var map, marker, options;
@@ -36,10 +38,12 @@ export default Component.extend(AbstractMapMixin, {
   }),
   initMarker: function(map) {
     var marker, options;
+    var defaultIcon = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569';
     options = {
       position: this.get('center'),
       map: map,
-      draggable: true
+      draggable: true,
+      icon: this.get('iconPath') || defaultIcon
     };
     marker = new google.maps.Marker(options);
     google.maps.event.addListener(marker, 'dragend', (event) => {
@@ -58,8 +62,10 @@ export default Component.extend(AbstractMapMixin, {
       types: ['geocode']
     });
     return google.maps.event.addListener(autocomplete, 'place_changed', () => {
-      var place, pos;
+      var place, pos, address;
       place = autocomplete.getPlace();
+      address = autocomplete.getPlace().formatted_address;
+      this.set('model.address', address);
       if (!place.geometry) {
         return;
       }
