@@ -70,7 +70,7 @@ export default Mixin.create({
     });
   },
   setZoom(zoom) {
-    return this.setAttrs(null, null, zoom, null);
+    return this.setAttrs(null, null, zoom);
   },
   centerCoords() {
     if (this.get('lat') && this.get('long')) {

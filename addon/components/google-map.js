@@ -8,12 +8,16 @@ const { Component, on, computed } = Ember;
 export default Component.extend(AbstractMapMixin, {
   layout: layout,
 
-  adress: null,
   mapType: 'asGoogleMap',
   iconPath: null,
+  zoom: Ember.computed('model.zoom', function() {
+    let modelZoom = this.get('model.zoom')  ;
+    return modelZoom ? modelZoom : 1;
+  }),
 
   initialize: on('didInsertElement', function() {
     var map, marker, options;
+
     options = {
       zoom: this.get('zoom'),
       center: this.get('center'),
