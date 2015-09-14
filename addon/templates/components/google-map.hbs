@@ -1,6 +1,8 @@
+<div class="map"></div>
 {{#unless disableAutocomplete}}
-  <div class="geo_input">
-    {{input class="google-map-autocomplete"}}
+  <div class={{inputClass}}>
+    <label>{{labelText}}</label>
+    {{input type="text" value=model.address class="google-map-autocomplete"}}
   </div>
 {{/unless}}
-<div class="map"></div>
+{{yield}}
