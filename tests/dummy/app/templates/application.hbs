@@ -7,8 +7,14 @@
     <li>zoom: {{model.zoom}}</li>
   </ul>
 </div>
+
+
+{{google-map-autocomplete model=model action='updateModel' class="test"}}
+
 {{google-map model=model action='updateModel'}}
 {{yandex-map model=model action='updateModel'}}
 {{google-map model=model action='updateModel'}}
+
+
 
 {{outlet}}
