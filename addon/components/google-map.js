@@ -7,7 +7,7 @@ const { Component, on, computed } = Ember;
 
 export default Component.extend(AbstractMapMixin, {
   layout: layout,
-
+  
   mapType: 'asGoogleMap',
   iconPath: null,
   zoom: Ember.computed('model.zoom', function() {
@@ -25,6 +25,22 @@ export default Component.extend(AbstractMapMixin, {
     };
     map = new google.maps.Map(this.$().find(".map")[0], options);
     marker = this.initMarker(map);
+    var self = this;
+    function addMarker(location) {
+      var defaultIcon = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569';
+      var markers = [];
+      var marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        draggable: true,
+        icon: self.get('iconPath') || defaultIcon
+      });
+
+      markers.push(marker);
+    };
+    map.addListener('click', function(event) {
+      addMarker(event.latLng);
+    });
     if (!this.get('disableAutocomplete')) {
       this.initAutocomplete(map, marker);
     }
@@ -40,6 +56,7 @@ export default Component.extend(AbstractMapMixin, {
   mapTypeId: computed(function() {
     return google.maps.MapTypeId.ROADMAP;
   }),
+
   initMarker: function(map) {
     var marker, options;
     var defaultIcon = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569';
@@ -58,6 +75,7 @@ export default Component.extend(AbstractMapMixin, {
     });
     return marker;
   },
+
   initAutocomplete: function(map, marker) {
     var autocomplete, autocompleteView, input;
     autocompleteView = this.$('.google-map-autocomplete');
@@ -84,4 +102,5 @@ export default Component.extend(AbstractMapMixin, {
       return this.setAttrs(pos.lat(), pos.lng());
     });
   },
+  
 });
