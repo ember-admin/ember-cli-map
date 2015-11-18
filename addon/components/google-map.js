@@ -17,6 +17,7 @@ export default Component.extend(AbstractMapMixin, {
 
   initialize: on('didInsertElement', function() {
     var map, marker, options;
+    var self = this;
 
     options = {
       zoom: this.get('zoom'),
@@ -25,21 +26,9 @@ export default Component.extend(AbstractMapMixin, {
     };
     map = new google.maps.Map(this.$().find(".map")[0], options);
     marker = this.initMarker(map);
-    var self = this;
-    function addMarker(location) {
-      var defaultIcon = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569';
-      var markers = [];
-      var marker = new google.maps.Marker({
-        position: location,
-        map: map,
-        draggable: true,
-        icon: self.get('iconPath') || defaultIcon
-      });
-
-      markers.push(marker);
-    };
+    
     map.addListener('click', function(event) {
-      addMarker(event.latLng);
+      self.addMarker(event.latLng, map);
     });
     if (!this.get('disableAutocomplete')) {
       this.initAutocomplete(map, marker);
@@ -56,7 +45,18 @@ export default Component.extend(AbstractMapMixin, {
   mapTypeId: computed(function() {
     return google.maps.MapTypeId.ROADMAP;
   }),
+  addMarker: function(location, map) {
+    var defaultIcon = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569';
+    var markers = [];
+    var marker = new google.maps.Marker({
+      position: location,
+      map: map,
+      draggable: true,
+      icon: this.get('iconPath') || defaultIcon
+    });
 
+    markers.push(marker);
+  },
   initMarker: function(map) {
     var marker, options;
     var defaultIcon = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569';
