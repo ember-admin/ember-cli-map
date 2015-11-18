@@ -30,11 +30,15 @@ export default Component.extend(AbstractMapMixin, {
 
   initMap: function() {
     var map;
+    var self = this;
     map = new ymaps.Map(this.get('childId'), {
       center: this.get('center'),
       zoom: this.get('zoom')
     });
     this.initMarker(map);
+    map.events.add('click', function (click) {
+      self.addMarker(map, click.get('coords'));
+    });
     map.controls.add('zoomControl', {
       left: 5,
       top: 5
@@ -47,6 +51,25 @@ export default Component.extend(AbstractMapMixin, {
   center: computed(function() {
     return this.centerCoords();
   }),
+  addMarker: function(map, coord) {
+    var mark;
+    var i = 1;
+    map.geoObjects.each(function (geoObject) {
+      i+=1;
+    });
+    mark = new ymaps.Placemark(coord, {
+      iconContent: `${i}`,
+      balloonContent: '',
+      hintContent: ''
+    }, {
+      preset: 'twirl#violetIcon',
+      draggable: true
+    });
+    map.geoObjects.add(mark);
+    return mark.events.add("dragend", () => {
+      return this.setAttrs(mark.geometry.getCoordinates());
+    });
+  },
   initMarker: function(map) {
     var mark;
     mark = new ymaps.Placemark(this.get('center'), {
