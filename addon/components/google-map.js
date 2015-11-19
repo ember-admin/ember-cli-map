@@ -30,7 +30,7 @@ export default Component.extend(AbstractMapMixin, {
     map.addListener('click', function(event) {
       self.addMarker(event.latLng, map);
     });
-    map.addListener('center_changed', function(event) {
+    map.addListener('center_changed', function() {
       self.set('mapCenter',map.getCenter());
     });
     if (!this.get('disableAutocomplete')) {

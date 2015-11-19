@@ -41,9 +41,7 @@ export default Component.extend(AbstractMapMixin, {
       self.addMarker(map, click.get('coords'));
     });
     map.events.add('boundschange', function (e) {
-      if (e.get('newCenter') != e.get('oldCenter')) {
-          self.set('mapCenter', e.get('newCenter'));
-      }
+      self.set('mapCenter', e.get('newCenter'));
     });
     map.controls.add('zoomControl', {
       left: 5,
@@ -60,7 +58,7 @@ export default Component.extend(AbstractMapMixin, {
   addMarker: function(map, coord) {
     var mark;
     var i = 1;
-    map.geoObjects.each(function (geoObject) {
+    map.geoObjects.each(function () {
       i+=1;
     });
     mark = new ymaps.Placemark(coord, {
