@@ -7,7 +7,7 @@ const { Component, on, computed } = Ember;
 
 export default Component.extend(AbstractMapMixin, {
   layout: layout,
-
+  
   mapType: 'asGoogleMap',
   iconPath: null,
   zoom: Ember.computed('model.zoom', function() {
@@ -17,6 +17,7 @@ export default Component.extend(AbstractMapMixin, {
 
   initialize: on('didInsertElement', function() {
     var map, marker, options;
+    var self = this;
 
     options = {
       zoom: this.get('zoom'),
@@ -25,6 +26,13 @@ export default Component.extend(AbstractMapMixin, {
     };
     map = new google.maps.Map(this.$().find(".map")[0], options);
     marker = this.initMarker(map);
+    self.set('mapCenter', this.get('center'));
+    map.addListener('click', function(event) {
+      self.addMarker(event.latLng, map);
+    });
+    map.addListener('center_changed', function() {
+      self.set('mapCenter',map.getCenter());
+    });
     if (!this.get('disableAutocomplete')) {
       this.initAutocomplete(map, marker);
     }
@@ -40,6 +48,18 @@ export default Component.extend(AbstractMapMixin, {
   mapTypeId: computed(function() {
     return google.maps.MapTypeId.ROADMAP;
   }),
+  addMarker: function(location, map) {
+    var defaultIcon = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569';
+    var markers = [];
+    var marker = new google.maps.Marker({
+      position: location,
+      map: map,
+      draggable: true,
+      icon: this.get('iconPath') || defaultIcon
+    });
+
+    markers.push(marker);
+  },
   initMarker: function(map) {
     var marker, options;
     var defaultIcon = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569';
@@ -58,6 +78,7 @@ export default Component.extend(AbstractMapMixin, {
     });
     return marker;
   },
+
   initAutocomplete: function(map, marker) {
     var autocomplete, autocompleteView, input;
     autocompleteView = this.$('.google-map-autocomplete');
@@ -84,4 +105,5 @@ export default Component.extend(AbstractMapMixin, {
       return this.setAttrs(pos.lat(), pos.lng());
     });
   },
+  
 });
