@@ -1,6 +1,7 @@
 <div class="map"></div>
 {{#unless disableAutocomplete}}
   <div class={{inputClass}}>
+    <center>Map center<br>{{mapCenter}}</center>
     <label>{{labelText}}</label>
     {{input type="text" value=model.address class="google-map-autocomplete"}}
   </div>

@@ -31,6 +31,7 @@ export default Component.extend(AbstractMapMixin, {
   initMap: function() {
     var map;
     var self = this;
+    self.set('mapCenter', this.get('center'));
     map = new ymaps.Map(this.get('childId'), {
       center: this.get('center'),
       zoom: this.get('zoom')
@@ -38,6 +39,11 @@ export default Component.extend(AbstractMapMixin, {
     this.initMarker(map);
     map.events.add('click', function (click) {
       self.addMarker(map, click.get('coords'));
+    });
+    map.events.add('boundschange', function (e) {
+      if (e.get('newCenter') != e.get('oldCenter')) {
+          self.set('mapCenter', e.get('newCenter'));
+      }
     });
     map.controls.add('zoomControl', {
       left: 5,

@@ -26,9 +26,12 @@ export default Component.extend(AbstractMapMixin, {
     };
     map = new google.maps.Map(this.$().find(".map")[0], options);
     marker = this.initMarker(map);
-    
+    self.set('mapCenter', this.get('center'));
     map.addListener('click', function(event) {
       self.addMarker(event.latLng, map);
+    });
+    map.addListener('center_changed', function(event) {
+      self.set('mapCenter',map.getCenter());
     });
     if (!this.get('disableAutocomplete')) {
       this.initAutocomplete(map, marker);
